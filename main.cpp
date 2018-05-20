@@ -1,6 +1,5 @@
 #include <GL/glut.h>
 #include<windows.h>
-#include "GL/freeglut.h"
 #include <math.h>
 #include<stdio.h>
 void DrawCircle(float cx, float cy, float r, int num_segments);
@@ -2434,7 +2433,7 @@ int main(int argc, char **argv)
     glutCreateWindow("Project Demo");
     init();
     glutDisplayFunc(display);
-   // glutTimerFunc(0,timer,0);
+    glutTimerFunc(0,timer,0);
 
     glutMainLoop();
 
