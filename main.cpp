@@ -1,7 +1,5 @@
 #include <GL/glut.h>
-#include<windows.h>
 #include <math.h>
-#include<stdio.h>
 void DrawCircle(float cx, float cy, float r, int num_segments);
 float x_bus=-15,y_bus=0,x_car1_position=50,y_car1_position =0,x_car2_position=50,y_car2_position=0;
 float x_line_pos=0,y_line_pos=0,x=0,x_car3_position=0,y_car3_position=50,x_car4_position=0,y_car4_position=0;
@@ -229,7 +227,7 @@ void timer(int){
             y_car4_position=0;
             x_truck1_position=0;
             y_truck1_position=0;
-            x_bus=-25;
+            x_bus=-15;
             y_bus=0;
             if(x==250)
             {
@@ -238,9 +236,9 @@ void timer(int){
             }
             break;
     case 12:
-        if(x_bus!=0)
+        if(x_bus<0)
         {
-            x_bus-=0.5; y_bus+=0.01;
+            x_bus-=0.75; y_bus+=0.01;
         }
         if(x_truck1_position>-100){
         x_truck1_position-=0.5;y_truck1_position+=0.01;
@@ -340,7 +338,8 @@ void traffic_light_color_change(){
         DrawCircle(47, 61.5, 2, 40); //side green
         break;
         case 3:
-
+        case 10:
+        case 15:
         glColor3ubv(red_off);
         DrawCircle(55, 65, 2, 40);//front red
 
@@ -379,6 +378,9 @@ void traffic_light_color_change(){
         DrawCircle(47, 61.5, 2, 40); //side green
         break;
         case 5:
+        case 9:
+        case 14:
+
         glColor3ubv(red_on);
         DrawCircle(55, 65, 2, 40);//front red
 
@@ -398,102 +400,10 @@ void traffic_light_color_change(){
         DrawCircle(47, 61.5, 2, 40); //side green
         break;
         case 7:
-        glColor3ubv(red_off);
-        DrawCircle(55, 65, 2, 40);//front red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(60, 65, 2, 40);//front yellow
-
-        glColor3ubv(green_off);
-        DrawCircle(65, 65, 2, 40);//front green
-
-        glColor3ubv(red_off);
-        DrawCircle(39, 53, 2, 40);//side red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(43, 57, 2, 40); //side yellow
-
-        glColor3ubv(green_off);
-        DrawCircle(47, 61.5, 2, 40); //side green
-        break;
         case 8:
-        glColor3ubv(red_off);
-        DrawCircle(55, 65, 2, 40);//front red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(60, 65, 2, 40);//front yellow
-
-        glColor3ubv(green_off);
-        DrawCircle(65, 65, 2, 40);//front green
-
-        glColor3ubv(red_off);
-        DrawCircle(39, 53, 2, 40);//side red
-
-        glColor3ubv(yellow_on);
-        DrawCircle(43, 57, 2, 40); //side yellow
-
-        glColor3ubv(green_off);
-        DrawCircle(47, 61.5, 2, 40); //side green
-        break;
-        case 9:
-        glColor3ubv(red_on);
-        DrawCircle(55, 65, 2, 40);//front red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(60, 65, 2, 40);//front yellow
-
-        glColor3ubv(green_off);
-        DrawCircle(65, 65, 2, 40);//front green
-
-        glColor3ubv(red_off);
-        DrawCircle(39, 53, 2, 40);//side red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(43, 57, 2, 40); //side yellow
-
-        glColor3ubv(green_on);
-        DrawCircle(47, 61.5, 2, 40); //side green
-        break;
-        case 10:
-        case 15:
-        glColor3ubv(red_off);
-        DrawCircle(55, 65, 2, 40);//front red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(60, 65, 2, 40);//front yellow
-
-        glColor3ubv(green_on);
-        DrawCircle(65, 65, 2, 40);//front green
-
-        glColor3ubv(red_on);
-        DrawCircle(39, 53, 2, 40);//side red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(43, 57, 2, 40); //side yellow
-
-        glColor3ubv(green_off);
-        DrawCircle(47, 61.5, 2, 40); //side green
-        break;
         case 12:
-        glColor3ubv(red_off);
-        DrawCircle(55, 65, 2, 40);//front red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(60, 65, 2, 40);//front yellow
-
-        glColor3ubv(green_off);
-        DrawCircle(65, 65, 2, 40);//front green
-
-        glColor3ubv(red_off);
-        DrawCircle(39, 53, 2, 40);//side red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(43, 57, 2, 40); //side yellow
-
-        glColor3ubv(green_off);
-        DrawCircle(47, 61.5, 2, 40); //side green
-        break;
         case 13:
+
         glColor3ubv(red_off);
         DrawCircle(55, 65, 2, 40);//front red
 
@@ -510,25 +420,6 @@ void traffic_light_color_change(){
         DrawCircle(43, 57, 2, 40); //side yellow
 
         glColor3ubv(green_off);
-        DrawCircle(47, 61.5, 2, 40); //side green
-        break;
-        case 14:
-        glColor3ubv(red_on);
-        DrawCircle(55, 65, 2, 40);//front red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(60, 65, 2, 40);//front yellow
-
-        glColor3ubv(green_off);
-        DrawCircle(65, 65, 2, 40);//front green
-
-        glColor3ubv(red_off);
-        DrawCircle(39, 53, 2, 40);//side red
-
-        glColor3ubv(yellow_off);
-        DrawCircle(43, 57, 2, 40); //side yellow
-
-        glColor3ubv(green_on);
         DrawCircle(47, 61.5, 2, 40); //side green
         break;
     }
@@ -724,11 +615,6 @@ void bus()
     glVertex2i(29,140);
     glEnd();
 
-
-
-
-
-
     glBegin(GL_LINE_LOOP);
 	glColor3ub(196, 3, 3);
     glVertex2i(20,50);
@@ -902,9 +788,6 @@ void bus()
     glVertex2i(29,140);
     glEnd();
 
-
-
-
     glColor3ub(53,54,56);
     DrawCircle(75,40,15,40);
     glColor3ub(53,54,56);
@@ -943,12 +826,15 @@ void drawstring(float x,float y,float z,char *string)
 	}
 
 }
+
+
 void renderStrokeFontString(
 		float x,
 		float y,
 		float z,
 		void *font,
-		char *string) {
+		char *string)
+{
 
 	char *c;
 	glPushMatrix();
@@ -973,18 +859,17 @@ void frontscreen(void)
     glColor3ub(239, 83, 35);
     glVertex2f(0,1000);
     glEnd();
-
     setFont(GLUT_BITMAP_TIMES_ROMAN_24);
     glColor3f(0,0,0);
-    drawstring(350.0,900.0,0.0,"ST JOSEPH ENGINEERING COLLEGE ");
-    setFont(GLUT_BITMAP_HELVETICA_18);
-    glColor3f(0.7,0,1);
-    drawstring(300,800,0.0,"DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING");
+    drawstring(350.0,900.0,0.0,"ST JOSEPH ENGINEERING COLLEGE");
+    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+    glColor3ub(234,214,112);
+    drawstring(250,800,0.0,"DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING");
     glColor3f(1,0.5,0);
-    setFont(GLUT_BITMAP_HELVETICA_18);
+    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
     drawstring(400,700,0.0,"A MINI PROJECT ON");
     glColor3f(0.6,0.60,0.1);
-    renderStrokeFontString(170,590,0,GLUT_STROKE_ROMAN,"SMART TRAFFIC LIGHTS");
+    renderStrokeFontString(110,520,0,GLUT_STROKE_ROMAN,"SMART TRAFFIC LIGHTS");
     glColor3f(1,0.5,0);
     setFont(GLUT_BITMAP_HELVETICA_18);
     drawstring(200,400,0.0,"BY:");
@@ -997,16 +882,16 @@ void frontscreen(void)
     glColor3f(1,1,1);
     drawstring(730,300,0.0,"MS. NISHA J ROCHE");
     glColor3f(1,1,1);
-    drawstring(710,250,0.0,"ASSISTANT PROFESSOR");
+    drawstring(710,240,0.0,"ASSISTANT PROFESSOR");
 
     if(state==0)
     {
     glBegin(GL_POLYGON);
-    glColor3ub(15, 43, 10);
+    glColor3ub(15, 43, 214);
     glVertex2f(0,0);
-    glColor3ub(66, 249, 0);
+    glColor3ub(29, 83, 3);
     glVertex2f(1000,0);
-    glColor3ub(193, 4, 17);
+    glColor3ub(56,16,214);
     glVertex2f(1000,1000);
     glColor3ub(29, 83, 3);
     glVertex2f(0,1000);
@@ -1037,24 +922,16 @@ void frontscreen(void)
     }
     if(state==11)
     {
-   /* glBegin(GL_POLYGON);
-    glColor3ub(15, 43, 10);
+    glBegin(GL_POLYGON);
+    glColor3ub(7,147,7);
     glVertex2f(0,0);
     glColor3ub(66, 249, 0);
     glVertex2f(1000,0);
     glColor3ub(193, 4, 17);
     glVertex2f(1000,1000);
-    glColor3ub(29, 83, 3);
+    glColor3ub(3,254,3);
     glVertex2f(0,1000);
-    glEnd();*/
-    glColor3ub(8,152,219);
-    glRectf(0,0,1000,200);
-    glColor3ub(182, 237, 4);
-    glRectf(0,200,1000,400);
-    glColor3ub(183, 45, 45);
-    glRectf(0,400,1000,600);
-    glColor3ub(204, 149, 30);
-    glRectf(0,600,1000,800);
+    glEnd();
 
     setFont(GLUT_BITMAP_TIMES_ROMAN_24);
 
@@ -1099,6 +976,11 @@ void draw_Truck_D()
     glColor3f(0,0,0);
     DrawCircle(95,10,7.5,40);
     DrawCircle(35,10,7.5,40);
+
+    glColor3f(1,1,1);
+    DrawCircle(95,10,4.25,40);
+    DrawCircle(35,10,4.25,40);
+    glColor3f(0,0,0);
     glRectf(20,20,110,25);
     glBegin(GL_POLYGON);
     glVertex2i(70,60);
@@ -1150,61 +1032,60 @@ void draw_traffic_lights(){
 
 }
 void drawCar_D1(){
-    glColor3f(1,0,0);
-    glLineWidth(5);
+
+
+    glColor3ub(114, 1, 1);
     glBegin(GL_POLYGON);
-    glVertex2f(10,3);
     glVertex2f(5,20);
-    glColor3ub(201,45,28);
-    glVertex2f(16,20);
-    glVertex2f(17,25);
-    glVertex2f(19,36);
-    glVertex2f(40,36);
-    glVertex2f(42,25);
-    glVertex2f(43,20);
+    glVertex2f(8,25);
+    glVertex2f(16.5,25);
+    glVertex2f(15,20);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glVertex2f(45,20);
+    glVertex2f(44,25);
+    glVertex2f(52,25);
     glVertex2f(55,20);
-    glVertex2f(50,3);
-    glVertex2f(45,3);
-    glVertex2f(40,3);
-    glColor3ub(160,39,25);
-    glVertex2f(20,3);
-    glVertex2f(22,33);
     glEnd();
+
+    glColor3ub(189,9,9);
     glBegin(GL_POLYGON);
-        glVertex2f(5,20);
-        glVertex2f(9,25);
-        glVertex2f(17,25);
-        glVertex2f(16,20);
+    glVertex2f(10,0);
+    glVertex2f(5,20);
+    glColor3ub(145,10,10);
+    glVertex2f(55,20);
+    glVertex2f(50,0);
     glEnd();
+    glColor3ub(189,9,9);
     glBegin(GL_POLYGON);
-    glColor3ub(160,39,25);
-        glVertex2f(42,25);
-        glVertex2f(51,25);
-        glVertex2f(55,20);
-        glVertex2f(43,20);
+    glVertex2f(15,20);
+    glVertex2f(18,40);
+    glColor3ub(145, 10, 10);
+    glVertex2f(41,40);
+    glVertex2f(45,20);
     glEnd();
+
     glColor3ub(186, 184, 186);
     glBegin(GL_POLYGON);
-        glVertex2f(22,33);
-        glVertex2f(29,33);
-        glVertex2f(29,23);
-        glVertex2f(20,23);
+        glVertex2f(22 ,35);
+        glVertex2f(29 ,35);
+        glVertex2f(29 ,23);
+        glVertex2f(20 ,23);
     glEnd();
     glBegin(GL_POLYGON);
-        glVertex2f(31,33);
-        glVertex2f(38,33);
-        glVertex2f(40,23);
-        glVertex2f(31,23);
+        glVertex2f(31 ,35);
+        glVertex2f(38 ,35);
+        glVertex2f(40 ,23);
+        glVertex2f(31 ,23);
     glEnd();
-
-
-
-
-
-
     glColor3f(0,0,0);
-    DrawCircle(19,3,5,40);
-    DrawCircle(42,3,5,40);
+    DrawCircle(19,0,5,40);
+    DrawCircle(42,0,5,40);
+    glColor3f(1,1,1);
+    DrawCircle(19,0,2,40);
+    DrawCircle(42,0,2,40);
+
 
 }
 void drawCar1(){
@@ -1216,59 +1097,58 @@ void drawCar1(){
     glPopMatrix();
 }
 void drawCar_D2(){
-    glColor3f(0.154,0.68,0.3);
-    glLineWidth(5);
+    glColor3ub(216, 105, 32);
     glBegin(GL_POLYGON);
-    glVertex2f(10 ,3);
-    glVertex2f(5 ,20);
-    glVertex2f(16 ,20);
-    glVertex2f(17 ,25);
-    glVertex2f(19 ,36);
-    glVertex2f(40 ,36);
-    glColor3f(0.3142,0.254,0);
-    glVertex2f(42 ,25);
-    glVertex2f(43 ,20);
-    glVertex2f(55 ,20);
-    glVertex2f(50 ,3);
-    glVertex2f(45 ,3);
-    glColor3f(0.21,0.62,0.1);
-    glVertex2f(40 ,3);
-    glVertex2f(20 ,3);
-    glVertex2f(22 ,33);
+    glVertex2f(5,20);
+    glVertex2f(8,25);
+    glVertex2f(16.5,25);
+    glVertex2f(15,20);
     glEnd();
+
     glBegin(GL_POLYGON);
-        glVertex2f(5 ,20);
-        glVertex2f(9 ,25);
-        glVertex2f(17 ,25);
-        glVertex2f(16 ,20);
+    glVertex2f(45,20);
+    glVertex2f(44,25);
+    glVertex2f(52,25);
+    glVertex2f(55,20);
     glEnd();
+
+    glColor3ub(216, 167, 32);
     glBegin(GL_POLYGON);
-        glVertex2f(42 ,25);
-        glVertex2f(51 ,25);
-        glVertex2f(55 ,20);
-        glVertex2f(43 ,20);
+    glVertex2f(10,0);
+    glVertex2f(5,20);
+    glColor3ub(107, 46, 6);
+    glVertex2f(55,20);
+    glVertex2f(50,0);
     glEnd();
+    glColor3ub(216, 167, 32);
+    glBegin(GL_POLYGON);
+    glVertex2f(15,20);
+    glVertex2f(18,40);
+    glColor3ub(107, 46, 6);
+    glVertex2f(41,40);
+    glVertex2f(45,20);
+    glEnd();
+
     glColor3ub(186, 184, 186);
     glBegin(GL_POLYGON);
-        glVertex2f(22 ,33);
-        glVertex2f(29 ,33);
+        glVertex2f(22 ,35);
+        glVertex2f(29 ,35);
         glVertex2f(29 ,23);
         glVertex2f(20 ,23);
     glEnd();
     glBegin(GL_POLYGON);
-        glVertex2f(31 ,33);
-        glVertex2f(38 ,33);
+        glVertex2f(31 ,35);
+        glVertex2f(38 ,35);
         glVertex2f(40 ,23);
         glVertex2f(31 ,23);
     glEnd();
-
-
-
-
-
     glColor3f(0,0,0);
-    DrawCircle(19 ,3,5,40);
-    DrawCircle(42 ,3,5,40);
+    DrawCircle(19,0,5,40);
+    DrawCircle(42,0,5,40);
+    glColor3f(1,1,1);
+    DrawCircle(19,0,2,40);
+    DrawCircle(42,0,2,40);
+
 }
 void drawCar2(){
     glPushMatrix();
@@ -1354,18 +1234,7 @@ glPushMatrix();
 	glutSolidTorus(7,7,100,90);
 	glPopMatrix();
 	glColor3ub(0,0,0);
-	glBegin(GL_LINES);
- 		glVertex2i(540,494);
- 		glVertex2i(540,490); //nose
-  		glVertex2i(531,498);
-		glVertex2i(532,499);
- 		glVertex2i(532,499);
-		glVertex2i(537,498);//eyebrow
-  	    glVertex2i(549,498);
-		glVertex2i(548,499);
-		glVertex2i(548,499);
- 		glVertex2i(543,498);//eyebrow
- 	glEnd();
+
 //ear right
 	glBegin(GL_POLYGON);
 	glColor3ub(255,191,128);
@@ -1760,14 +1629,7 @@ void man(){
 	glutSolidTorus(7,7,100,90);
 	glPopMatrix();
 	glColor3ub(0,0,0);
-	glBegin(GL_LINES);
- 		glVertex2i(540-220,495+76);
- 		glVertex2i(540-220,490+76); //nose
-  		glVertex2i(531-220,500+76);
- 		glVertex2i(537-220,500+76);//eyebrow
-  		glVertex2i(543-220,500+76);
- 		glVertex2i(549-220,500+76);//eyebrow
- 	glEnd();
+
 //ear right
 	glBegin(GL_POLYGON);
 	glColor3ub(255,191,128);
@@ -1933,19 +1795,7 @@ glVertex2i(560-220,405+76);
 	glEnd();
 
 }
-void arc (void)
-{
-        glLineWidth(4);
-        glColor3f(1,0,0);
-        glBegin(GL_LINE_STRIP);
-                glVertex2f(10,10);
-                glVertex2f(30,35);
-                glVertex2f(60,50);
-                glVertex2f(140,50);
-                glVertex2f(170,35);
-                glVertex2f(195,10);
-        glEnd();
-}
+
 void traffice_animate()
 {
     int i;
@@ -1969,6 +1819,31 @@ void traffice_animate()
         glTranslatef(-5,6.5,0);
     }
     glPopMatrix();
+
+
+
+    glPushMatrix();
+    for(i=0;i<10;i++)
+    {
+        glBegin(GL_LINES);
+        glVertex2f(90,44);
+        glVertex2f(90,44.5);
+        glEnd();
+        glTranslatef(-1,-2,0);
+    }
+    glPopMatrix();
+
+    glPushMatrix();
+    for(i=0;i<6;i++)
+    {
+        glBegin(GL_LINES);
+        glVertex2f(89,34);
+        glVertex2f(89,33.5);
+        glEnd();
+        glTranslatef(-1,-2,0);
+    }
+    glPopMatrix();
+
 }
 void drawSensors(){
     glColor3f(0.3,0.2,0.1);
@@ -2301,6 +2176,13 @@ void Scene(){
             }
         glPopMatrix();
     glPopMatrix();
+    glPushMatrix();
+        glTranslatef(60,25,0);
+        glScalef(0.07,0.1,0.07);
+        bus_stop();
+        woman();
+        man();
+    glPopMatrix();
     if(state<6){
         drawCar3();
 
@@ -2322,7 +2204,7 @@ void Scene(){
             glTranslatef(x_line_pos,y_line_pos,0);
             if(state==8){
                     glColor3f(0,0,0);
-            traffice_animate();
+                    traffice_animate();
             }
             glPopMatrix();
         }
@@ -2330,6 +2212,11 @@ void Scene(){
         drawCar4();
         glColor3f(1.0,0.5,0.25);
         drawBox();
+        glPushMatrix();
+            glTranslatef(65,-10,0);
+            glColor3f(1.0,0.5,0.25);
+            drawBox();
+        glPopMatrix();
         draw_Truck();
         glPushMatrix();
             glTranslatef(9,40,0);
@@ -2358,6 +2245,11 @@ void Scene(){
         drawCar4();
         glColor3f(1.0,0.5,0.25);
         drawBox();
+        glPushMatrix();
+            glTranslatef(65,-10,0);
+            glColor3f(1.0,0.5,0.25);
+            drawBox();
+        glPopMatrix();
         draw_Truck();
         glPushMatrix();
             glTranslatef(9,40,0);
@@ -2369,13 +2261,7 @@ void Scene(){
         draw_bus();
         glPopMatrix();
     }
-    glPushMatrix();
-        glTranslatef(60,35,0);
-        glScalef(0.07,0.09,0.07);
-        bus_stop();
-        woman();
-        man();
-    glPopMatrix();
+
 }
 void scene_transition()
 {
@@ -2419,7 +2305,6 @@ void display(){
     glClear(GL_COLOR_BUFFER_BIT);
     glEnable(GL_LINE_SMOOTH);
     scene_transition();
-
     glFlush();
     glutSwapBuffers();
 }
@@ -2434,7 +2319,6 @@ int main(int argc, char **argv)
     init();
     glutDisplayFunc(display);
     glutTimerFunc(0,timer,0);
-
     glutMainLoop();
 
     return 0;

@@ -228,12 +228,9 @@
 	<stddef.h>
 	<GL/gl.h>
 
-1526657520 source:c:\users\fiona\documents\projectdemo\main.cpp
+1527056882 source:c:\users\fiona\documents\projectdemo\main.cpp
 	<GL/glut.h>
-	<windows.h>
-	"GL/freeglut.h"
 	<math.h>
-	<stdio.h>
 
 1521379350 c:\users\fiona\documents\projectdemo\gltexture.h
 	<GL/gl.h>
