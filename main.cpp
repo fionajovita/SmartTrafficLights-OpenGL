@@ -78,14 +78,14 @@ void timer(int){
     {
     case -1:
         x=x+1;
-        if(x==250){
+        if(x==350){
             state=0;
             x=0;
         }
         break;
     case 0:
         x=x+1;
-        if(x==250){
+        if(x==350){
             state=1;
             x=0;
         }
@@ -112,7 +112,7 @@ void timer(int){
     break;
     case 2:
         x=x+1;
-        if(x==250){
+        if(x==350){
             state=3;
             x=0;
         }
@@ -129,7 +129,7 @@ void timer(int){
         break;
     case 4:
         x=x+1;
-        if(x==250){
+        if(x==350){
             state=5;
             x=0;
         }
@@ -828,12 +828,7 @@ void drawstring(float x,float y,float z,char *string)
 }
 
 
-void renderStrokeFontString(
-		float x,
-		float y,
-		float z,
-		void *font,
-		char *string)
+void renderStrokeFontString(float x,float y,float z,void *font,char *string)
 {
 
 	char *c;
@@ -848,17 +843,18 @@ void renderStrokeFontString(
 }
 void frontscreen(void)
 {
-
+    if(state==-1){
     glBegin(GL_POLYGON);
-    glColor3ub(135, 43, 10);
+    glColor3ub(74,17,72);
     glVertex2f(0,0);
-    glColor3ub(66, 9, 0);
+    glColor3ub(66, 29, 0);
     glVertex2f(1000,0);
-    glColor3ub(193, 40, 17);
+    glColor3ub(193, 4, 17);
     glVertex2f(1000,1000);
-    glColor3ub(239, 83, 35);
+    glColor3ub(34,24,32);
     glVertex2f(0,1000);
     glEnd();
+    glLineWidth(3.0);
     setFont(GLUT_BITMAP_TIMES_ROMAN_24);
     glColor3f(0,0,0);
     drawstring(350.0,900.0,0.0,"ST JOSEPH ENGINEERING COLLEGE");
@@ -868,7 +864,7 @@ void frontscreen(void)
     glColor3f(1,0.5,0);
     setFont(GLUT_BITMAP_TIMES_ROMAN_24);
     drawstring(400,700,0.0,"A MINI PROJECT ON");
-    glColor3f(0.6,0.60,0.1);
+    glColor3f(1,1,1);
     renderStrokeFontString(110,520,0,GLUT_STROKE_ROMAN,"SMART TRAFFIC LIGHTS");
     glColor3f(1,0.5,0);
     setFont(GLUT_BITMAP_HELVETICA_18);
@@ -883,8 +879,8 @@ void frontscreen(void)
     drawstring(730,300,0.0,"MS. NISHA J ROCHE");
     glColor3f(1,1,1);
     drawstring(710,240,0.0,"ASSISTANT PROFESSOR");
-
-    if(state==0)
+    }
+    else if(state==0)
     {
     glBegin(GL_POLYGON);
     glColor3ub(15, 43, 214);
@@ -896,11 +892,11 @@ void frontscreen(void)
     glColor3ub(29, 83, 3);
     glVertex2f(0,1000);
     glEnd();
-    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
 
     glColor3f(1,1,1);
-    renderStrokeFontString(150,490,0,GLUT_STROKE_ROMAN,"CURRENT SCENARIO");    }
-    if(state==6)
+    renderStrokeFontString(150,490,0,GLUT_STROKE_ROMAN,"CURRENT SCENARIO");
+    }
+    else if(state==6)
     {
     glBegin(GL_POLYGON);
     glColor3ub(239, 68, 57);
@@ -917,30 +913,28 @@ void frontscreen(void)
 
     glColor3f(0,0,0);
     renderStrokeFontString(300,400,0,GLUT_STROKE_ROMAN,"Scenario - 1");
-
- //   drawstring(370,540,0.0,"SCENARIO 1");
     }
-    if(state==11)
+    else if(state==11)
     {
     glBegin(GL_POLYGON);
-    glColor3ub(7,147,7);
+    glColor3ub(135, 43, 10);
     glVertex2f(0,0);
-    glColor3ub(66, 249, 0);
+    glColor3ub(66, 9, 0);
     glVertex2f(1000,0);
-    glColor3ub(193, 4, 17);
+    glColor3ub(193, 40, 17);
     glVertex2f(1000,1000);
-    glColor3ub(3,254,3);
+    glColor3ub(239, 83, 35);
     glVertex2f(0,1000);
     glEnd();
 
-    setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+    glColor3f(1,1,1);
+    renderStrokeFontString(250,490,0,GLUT_STROKE_ROMAN,"Smart Traffic Lights");
 
-    glColor3f(0,0,0);
-    drawstring(370,590,0.0,"SMART TRAFFIC LIGHTS");
-    glColor3f(0,0,0);
-    drawstring(370,540,0.0,"SCENARIO 2");
+    glColor3f(1,1,1);
+    renderStrokeFontString(300,400,0,GLUT_STROKE_ROMAN,"Scenario - 2");
+
     }
-    if(state==16)
+    else if(state==16)
     {
     glBegin(GL_POLYGON);
     glColor3ub(60, 234, 199);
@@ -955,7 +949,8 @@ void frontscreen(void)
     setFont(GLUT_BITMAP_TIMES_ROMAN_24);
 
     glColor3f(0,0,0);
-    drawstring(370,590,0.0,"THANK YOU");
+    renderStrokeFontString(250,490,0,GLUT_STROKE_ROMAN,"THANK YOU!!");
+
     }
     glFlush();
 }
@@ -1845,6 +1840,7 @@ void traffice_animate()
     glPopMatrix();
 
 }
+
 void drawSensors(){
     glColor3f(0.3,0.2,0.1);
     DrawCircle(25,12,3.75,40);
@@ -1856,6 +1852,7 @@ void drawSensors(){
     DrawCircle(80,65,3,40);
     DrawCircleDash(80,65,3.5,15);
 }
+/*
 void traffic_animate()
 {
     int i;
@@ -1879,7 +1876,7 @@ void traffic_animate()
         glTranslatef(-5,6.5,0);
     }
     glPopMatrix();
-}
+}*/
 void centerfunc1(){
     glColor3f(1.0,1.0,1.0);
     glBegin(GL_POLYGON);
@@ -2313,9 +2310,9 @@ void display(){
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
-    glutInitWindowSize(1350,650);
-    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GL_DEPTH_BUFFER_BIT);
-    glutCreateWindow("Project Demo");
+    glutInitWindowSize(1350,675);
+    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
+    glutCreateWindow("Smart Traffic Lights");
     init();
     glutDisplayFunc(display);
     glutTimerFunc(0,timer,0);
